@@ -1,11 +1,10 @@
 import mysql from 'mysql2/promise';
-export default async function obterConexao(){
+export default async function obterConexao() {
 
-    if(global.poolConexoes){
+    if (global.poolConexoes) {
         return await global.poolConexoes.getConnection();
     }
-    else
-    {
+    else {
         const poolConexoes = await mysql.createPool({
             host: process.env.DB_HOST,
             user: process.env.DB_USUARIO,

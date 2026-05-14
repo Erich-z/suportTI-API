@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 
 import rotaChamado from './routes/rotaChamado.js';
+import rotaWebhook from './routes/rotaWebhook.js';
 
 
 dotenv.config();
@@ -15,6 +16,7 @@ const app = express();
 app.use(express.json());
 
 app.use('/chamado', rotaChamado);
+app.use('/webhook', rotaWebhook);
 
 app.listen(porta, host, () => {
 
