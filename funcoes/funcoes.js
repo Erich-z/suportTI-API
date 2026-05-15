@@ -15,25 +15,34 @@ export async function listarChamados() {
         const listaChamados =
             await chamado.consultar();
 
-        let texto = "Chamados cadastrados:\n\n";
+        const mensagens = [];
+
+        mensagens.push("📋 Chamados cadastrados:\n");
 
         for (const item of listaChamados) {
 
-            texto +=
-                `Usuário: ${item.usuario}\n`;
+            mensagens.push(
+                `👤 Usuário: ${item.usuario}`
+            );
 
-            texto +=
-                `Problema: ${item.tipoProblema}\n`;
+            mensagens.push(
+                `🛠 Problema: ${item.tipoProblema}`
+            );
 
-            texto +=
-                `Urgência: ${item.urgencia}\n\n`;
+            mensagens.push(
+                `⚠ Urgência: ${item.urgencia}`
+            );
+
+            mensagens.push(
+                "━━━━━━━━━━━━━━━"
+            );
 
         }
 
         resposta.fulfillmentMessages.push({
 
             text: {
-                text: [texto]
+                text: mensagens
             }
 
         });
